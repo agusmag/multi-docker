@@ -9,7 +9,7 @@ before_install:
 
 script:
   # Run the test of the client project
-  - docker run -e CI=true agustinmag/react-rest npm test
+  - docker run -e CI=true agustinmag/react-test npm test
 
 after_success:
   # Build production images of each project
