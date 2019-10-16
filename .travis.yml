@@ -5,7 +5,7 @@ services:
 
 before_install:
   # Build development image of the client project
-  - docker build -t agustinmag/react-test -f ./client/Dockerfile.dev ./client/
+  - docker build -t agustinmag/react-test -f Dockerfile.dev ./client/
 
 script:
   # Run the test of the client project
