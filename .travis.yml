@@ -1,10 +1,11 @@
+language: generic
 sudo: required
 services:
   - docker
 
 before_install:
   # Build development image of the client project
-  - docker build -t agustinmag/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t agustinmag/react-test -f ./client/Dockerfile.dev ./client/
 
 script:
   # Run the test of the client project
@@ -12,10 +13,10 @@ script:
 
 after_success:
   # Build production images of each project
-  - docker build -t agustinmag/multi-client ./client
-  - docker build -t agustinmag/multi-nginx ./nginx
-  - docker build -t agustinmag/multi-server ./server
-  - docker build -t agustinmag/multi-worker ./worker
+  - docker build -t agustinmag/multi-client ./client/
+  - docker build -t agustinmag/multi-nginx ./nginx/
+  - docker build -t agustinmag/multi-server ./server/
+  - docker build -t agustinmag/multi-worker ./worker/
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
